@@ -8,6 +8,7 @@ namespace AddressBookSystem
 {
     class Person
     {
+        //here the values are assign to below variables and we are getting the value from console when addContact method is called
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int PhoneNumber { get; set; }
@@ -16,10 +17,10 @@ namespace AddressBookSystem
     }
     internal class AddressBook
     {
-        public List<Person> People = new List<Person>();
-        public void addContact()
+        public List<Person> People = new List<Person>(); // object is created of list class of type Person
+        public void addContact() // with this method the values are taken from user through console
         {
-            Person person = new Person();
+            Person person = new Person(); // creating a object of person class to assign the values received from user 
             Console.Write("Enter the First Name: ");
             person.FirstName = Console.ReadLine();
             Console.Write("Enter the Last Name: ");
@@ -38,9 +39,9 @@ namespace AddressBookSystem
             Console.Write("Enter the Zipcode: ");
             add[3] = Console.ReadLine();
             person.Address = add;
-            People.Add(person);
+            People.Add(person); // with add method we are adding the contact in list People
         }
-        public void printContact(Person person)
+        public void printContact(Person person) // in this method, we are printing all the details
         {
             Console.WriteLine("Full name : " + person.FirstName+ " "+person.LastName);
             Console.WriteLine("Mobile number : "+person.PhoneNumber);
@@ -52,13 +53,8 @@ namespace AddressBookSystem
         }
         public void listContact()
         {
-            if(People.Count == 0)
-            {
-                Console.WriteLine("Your contact list is empty.");
-                return;
-            }
             Console.WriteLine("Following is your Contact List:");
-            foreach(var person in People)
+            foreach(var person in People) // using foreach loop, it will print the contact stored in People list one by one by calling printContact method
             {
                 printContact(person);
             }
