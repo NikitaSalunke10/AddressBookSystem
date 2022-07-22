@@ -127,14 +127,14 @@ namespace AddressBookSystem
                         }
                         return;
                     }
-                    else // if condition becomes false them it will print below message
+                    else // if the condition becomes false then it will print below message
                     {
                         Console.WriteLine("-------------------------------------------");
                         Console.WriteLine("Enter a valid name.");
                     }
                 }
             }
-            else // if condition becomes false them it will print below message
+            else // if the condition becomes false then it will print below message
             {
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Address Book is empty.");
