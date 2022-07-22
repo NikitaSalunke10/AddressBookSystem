@@ -138,8 +138,35 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Address Book is empty.");
+            } 
+        }
+        public void deleteContact() //In this method, a contact is deleted based on the first name
+        {
+            if (People.Count != 0)
+            {
+                Console.WriteLine("-------------------------------------------");
+                Console.WriteLine("Enter the first name you want to delete : ");
+                string deleteContact = Console.ReadLine(); //from user first name is taken to delete the contact
+                for (int i = 0; i < People.Count; i++) // for loop is used to find the name in list
+                {
+                    if (deleteContact.ToLower() == People[i].FirstName.ToLower()) // condition is checked whether the user given name with any present name in list
+                    {
+                        People.RemoveAt(i); //if name is present in list then that contact is removed from list
+                        Console.WriteLine("Contact is deleted.");
+                        
+                    }
+                    else // if the condition becomes false then it will print below message
+                    {
+                        Console.WriteLine("-------------------------------------------");
+                        Console.WriteLine("Enter a valid name.");
+                    }
+                }
             }
-            
+            else // if the condition becomes false then it will print below message
+            {
+                Console.WriteLine("-------------------------------------------");
+                Console.WriteLine("Address Book is empty.");
+            }
         }
     }
 }
