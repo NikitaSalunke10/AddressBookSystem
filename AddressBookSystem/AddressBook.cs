@@ -81,7 +81,7 @@ namespace AddressBookSystem
                 findContact = Console.ReadLine(); // here the first name is store of which user want to edit the contact
                 foreach (var person in People) // using foreach loop we are checking if the first name is present in list or not
                 {
-                    if (findContact == person.FirstName) // if the first name is present the it will go inside if statement and ask option
+                    if (findContact.ToLower() == person.FirstName.ToLower()) // if the first name is present the it will go inside if statement and ask option
                     {
                         Console.WriteLine("1 for First Name.\n2 for Last Name.\n3 for Mobile number.\n 4 for Email ID.");
                         Console.WriteLine("5 for Address.\n6 for City.\n7 for State.\n8 for Zipcode. ");
