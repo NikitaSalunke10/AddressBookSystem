@@ -10,6 +10,7 @@ while(option != 5) //while loop is used so user can enter option of which task t
     Console.WriteLine("Press 4 to delete the contact.\nPress 5 to exit");
     Console.WriteLine("Please enter option number: ");
     option = int.Parse(Console.ReadLine()); // taking value of option through console
+
     switch(option)
     {
         case 1: // if option value 1 is entered then it matches with this case and user will be able to add contact
