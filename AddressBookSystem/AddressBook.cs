@@ -221,5 +221,55 @@ namespace AddressBookSystem
                 printContact(person);
             }
         }
+        public void ViewPersonByCityState() // this method is used to create dictionary of city and state wise
+        {
+            Dictionary<string, List<Person>> CityAddressBook = new Dictionary<string, List<Person>>();
+            Dictionary<string, List<Person>> StateAddressBook = new Dictionary<string, List<Person>>();
+            Console.WriteLine("Press 1 if want to search by City or Press 2 if want to search by state");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            string city, state;
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Enter the city you want to search: ");
+                    city = Console.ReadLine();
+                    CityAddressBook[city] = new List<Person>();
+                    foreach(Person person in People.FindAll(e => e.Address[1].Equals(city)))
+                    {
+                        CityAddressBook[city].Add(person);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Enter the state you want to search: ");
+                    state = Console.ReadLine();
+                    StateAddressBook[state] = new List<Person>();
+                    foreach (Person person in People.FindAll(e => e.Address[2].Equals(state)))
+                    {
+                        StateAddressBook[state].Add(person);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Wrong input");
+                    break;
+            }
+            foreach(var person in CityAddressBook) // it will print CityAddressBood dictionary
+            {
+                foreach(var item in person.Value)
+                {
+                    Console.WriteLine("-------------------------------------------");
+                    printContact(item);
+                }
+            }
+            foreach (var person in StateAddressBook)// it will print StateAddressBood dictionary
+            {
+                foreach (var item in person.Value)
+                {
+                    Console.WriteLine("-------------------------------------------");
+                    printContact(item);
+                }
+            }
+        }
     }
 }

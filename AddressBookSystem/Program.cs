@@ -33,7 +33,7 @@ while(option != 8) //while loop is used so user can enter option of which task t
             addressBook.displayUniqueContact();
             break;
         case 7: //option 7 is entered then it will ask for city or state to enter and search the contact
-            addressBook.SearchContact();
+            addressBook.ViewPersonByCityState();
             break;
         case 8:// if option value 7 is entered then it matches with this case and it will exit the code after displaying message
             Console.WriteLine("Exiting from Program.");
