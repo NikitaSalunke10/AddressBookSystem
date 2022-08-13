@@ -25,6 +25,11 @@ namespace AddressBookSystem
             Console.WriteLine("-------------------------------------------");
             Console.Write("Enter the First Name: ");
             person.FirstName = Console.ReadLine();
+            bool check = checkDuplicate(person.FirstName); // check will store the true or false value returned from method
+            if(check) // if value is true then the name is already exits and will come out of method
+            {
+                return;
+            }
             Console.Write("Enter the Last Name: ");
             person.LastName = Console.ReadLine();
             Console.Write("Enter the Mobile number: ");
@@ -52,6 +57,18 @@ namespace AddressBookSystem
             Console.WriteLine("City : " + person.Address[1]);
             Console.WriteLine("State : " + person.Address[2]);
             Console.WriteLine("Zipcode : " + person.Address[3]);
+        }
+        public Boolean checkDuplicate(string firstName)// this method is used to check whether the name is already present in list or not
+        {
+            foreach(var person in People)
+            {
+                if(person.FirstName == firstName)
+                {
+                    Console.WriteLine("Name already exits.");
+                    return true;
+                }
+            }
+            return false;
         }
         public void listContact()
         {
