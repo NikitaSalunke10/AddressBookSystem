@@ -18,6 +18,7 @@ namespace AddressBookSystem
     internal class AddressBook
     {
         public List<Person> People = new List<Person>(); // object is created of list class of type Person
+        Dictionary<string, List<Person>> dict = new Dictionary<string, List<Person>>();
         public void addContact() // with this method the values are taken from user through console
         {
             Person person = new Person(); // creating a object of person class to assign the values received from user 
@@ -166,6 +167,30 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Address Book is empty.");
+            }
+        }
+        public void AddUniqueContact() // this method is used to store the contact in dictionary so it will have unique contacts
+        {
+            Console.WriteLine("-------------------------------------------");
+            Console.Write("Enter the First Name you want to add in Unique Contact Book: ");
+            string firstName = Console.ReadLine(); 
+            foreach (var person in People)
+            {
+                if(People.Contains(person)) 
+                {
+                    dict.Add(firstName, People); // it will add the unique contact only and not the duplicate
+                }
+            }
+        }
+        public void displayUniqueContact() //this method is used to display the unique contacts
+        {
+            foreach(var item in dict)
+            {
+                foreach(var contact in item.Value)
+                {
+                    Console.WriteLine("-------------------------------------------");
+                    printContact(contact);
+                }
             }
         }
     }
