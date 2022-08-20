@@ -275,12 +275,46 @@ namespace AddressBookSystem
                     break;
             }
         }
-        public void SortContacts() // this method is used to display sorted contacts by there first name
+        public void SortContacts() // this method is used to display sorted contacts
         {
-            foreach(Person person in People.OrderBy(name => name.FirstName)) // OrderBy is used to sort the contacts by first names
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine("Press 1 to Sort by Name.\nPress 2 to Sort by City");
+            Console.WriteLine("Press 3 to Sort by State.\nPress 4 to Sort by ZipCode");
+            Console.WriteLine("Please enter the option: ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
             {
-                Console.WriteLine("-------------------------------------------");
-                printContact(person);
+                case 1:
+                    foreach (Person person in People.OrderBy(name => name.FirstName)) // OrderBy is used to sort the contacts by first names
+                    {
+                        Console.WriteLine("-------------------------------------------");
+                        printContact(person);
+                    }
+                    break;
+                case 2:
+                    foreach (Person person in People.OrderBy(name => name.Address[1])) // OrderBy is used to sort the contacts by City
+                    {
+                        Console.WriteLine("-------------------------------------------");
+                        printContact(person);
+                    }
+                    break;
+                case 3:
+                    foreach (Person person in People.OrderBy(name => name.Address[2])) // OrderBy is used to sort the contacts by state
+                    {
+                        Console.WriteLine("-------------------------------------------");
+                        printContact(person);
+                    }
+                    break;
+                case 4:
+                    foreach (Person person in People.OrderBy(name => name.Address[3])) // OrderBy is used to sort the contacts by zip code
+                    {
+                        Console.WriteLine("-------------------------------------------");
+                        printContact(person);
+                    }
+                    break;
+                default :
+                    Console.WriteLine("Wrong input");
+                    break ;
             }
         }
     }
