@@ -239,6 +239,16 @@ namespace AddressBookSystem
                     {
                         CityAddressBook[city].Add(person);
                     }
+                    foreach (var person in CityAddressBook) // it will print CityAddressBood dictionary
+                    {
+                        foreach (var item in person.Value)
+                        {
+                            Console.WriteLine("-------------------------------------------");
+                            printContact(item);
+                        }
+                    }
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Total count of people at {0} city: {1}", city, CityAddressBook[city].Count); // this will print the city and count of contacts in that same city
                     break;
                 case 2:
                     Console.WriteLine("-------------------------------------------");
@@ -249,26 +259,20 @@ namespace AddressBookSystem
                     {
                         StateAddressBook[state].Add(person);
                     }
+                    foreach (var person in StateAddressBook)// it will print StateAddressBood dictionary
+                    {
+                        foreach (var item in person.Value)
+                        {
+                            Console.WriteLine("-------------------------------------------");
+                            printContact(item);
+                        }
+                    }
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Total count of people at {0} state: {1}", state, StateAddressBook[state].Count);// this will print the state and count of contacts in that same state
                     break;
                 default:
                     Console.WriteLine("Wrong input");
                     break;
-            }
-            foreach(var person in CityAddressBook) // it will print CityAddressBood dictionary
-            {
-                foreach(var item in person.Value)
-                {
-                    Console.WriteLine("-------------------------------------------");
-                    printContact(item);
-                }
-            }
-            foreach (var person in StateAddressBook)// it will print StateAddressBood dictionary
-            {
-                foreach (var item in person.Value)
-                {
-                    Console.WriteLine("-------------------------------------------");
-                    printContact(item);
-                }
             }
         }
     }
