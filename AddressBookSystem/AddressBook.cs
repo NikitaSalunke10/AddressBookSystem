@@ -292,21 +292,21 @@ namespace AddressBookSystem
                     }
                     break;
                 case 2:
-                    foreach (Person person in People.OrderBy(name => name.Address[1])) // OrderBy is used to sort the contacts by City
+                    foreach (Person person in People.OrderBy(city => city.Address[1])) // OrderBy is used to sort the contacts by City
                     {
                         Console.WriteLine("-------------------------------------------");
                         printContact(person);
                     }
                     break;
                 case 3:
-                    foreach (Person person in People.OrderBy(name => name.Address[2])) // OrderBy is used to sort the contacts by state
+                    foreach (Person person in People.OrderBy(state => state.Address[2])) // OrderBy is used to sort the contacts by state
                     {
                         Console.WriteLine("-------------------------------------------");
                         printContact(person);
                     }
                     break;
                 case 4:
-                    foreach (Person person in People.OrderBy(name => name.Address[3])) // OrderBy is used to sort the contacts by zip code
+                    foreach (Person person in People.OrderBy(code => code.Address[3])) // OrderBy is used to sort the contacts by zip code
                     {
                         Console.WriteLine("-------------------------------------------");
                         printContact(person);
