@@ -275,5 +275,13 @@ namespace AddressBookSystem
                     break;
             }
         }
+        public void SortContacts() // this method is used to display sorted contacts by there first name
+        {
+            foreach(Person person in People.OrderBy(name => name.FirstName)) // OrderBy is used to sort the contacts by first names
+            {
+                Console.WriteLine("-------------------------------------------");
+                printContact(person);
+            }
+        }
     }
 }
