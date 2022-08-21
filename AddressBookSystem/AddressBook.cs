@@ -341,23 +341,21 @@ namespace AddressBookSystem
                 Console.WriteLine(File.ReadAllText(path)); // all the contacts in the file are displayed
             }
         }
-        public void ReadWriteCSVFile()
+        public void ReadWriteCSVFile()//this method is used to write and read contacts from csv file
         {
-            string path1 = @"C:\Users\LENOVO\source\repos\AddressBookSystem\AddressBookSystem\AddressBook.csv";
-            Console.WriteLine("**********************Write to csv file **************************");
-            //Writing csv file
+            string path1 = @"C:\Users\LENOVO\source\repos\AddressBookSystem\AddressBookSystem\AddressBook.csv"; //path of csv file is stored in path
+            Console.WriteLine("Writing contacts in CSV file");
             using (var writer = new StreamWriter(path1))
             using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csvExport.WriteRecords(People);
+                csvExport.WriteRecords(People); //contacts are written in csv file
             }
             using (var reader = new StreamReader(path1))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                var records = csv.GetRecords<Person>().ToList();
-                Console.WriteLine("Record inserted successfully in file in CSV format");
-                Console.WriteLine("Read data successfully from addresses csv.");
-                foreach (Person person in records)
+                var records = csv.GetRecords<Person>().ToList(); // contacts from csv file are converted in list and stored in records
+                Console.WriteLine("Reading contacts from CSV file");
+                foreach (Person person in records)//foreach loop is used to print all contacts
                 {
                     Console.WriteLine("-------------------------------------------");
                     Console.WriteLine("Full name : " + person.FirstName + " " + person.LastName);
