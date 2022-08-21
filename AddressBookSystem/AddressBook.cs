@@ -198,15 +198,7 @@ namespace AddressBookSystem
             {
                 if(People.Contains(person)) 
                 {
-<<<<<<< HEAD
                     dict.Add(firstName, People); // it will add the unique contact only and not the duplicate
-<<<<<<< HEAD
-                    break;
-=======
-                    dict.Add(firstName, People); // it will add the unique contact only and not the duplicate 
->>>>>>> UC-7-NoDuplicateName
-=======
->>>>>>> UC-14-ReadWriteCSVFile
                 }
             }
         }
