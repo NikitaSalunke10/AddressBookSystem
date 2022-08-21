@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,10 @@ namespace AddressBookSystem
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-        public string[] Address { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
     }
     internal class AddressBook
     {
@@ -36,16 +41,14 @@ namespace AddressBookSystem
             person.PhoneNumber = Console.ReadLine();
             Console.Write("Enter the Email ID: ");
             person.Email = Console.ReadLine();
-            string[] add = new string[4];
             Console.Write("Enter the Address: ");
-            add[0] = Console.ReadLine();
+            person.Address = Console.ReadLine();
             Console.Write("Enter the City: ");
-            add[1] = Console.ReadLine();
+            person.City = Console.ReadLine();
             Console.Write("Enter the State: ");
-            add[2] = Console.ReadLine();
+            person.State = Console.ReadLine();
             Console.Write("Enter the Zipcode: ");
-            add[3] = Console.ReadLine();
-            person.Address = add;
+            person.ZipCode = Console.ReadLine();
             People.Add(person); // with add method we are adding the contact in list People
         }
         public void printContact(Person person) // in this method, we are printing all the details
@@ -53,10 +56,10 @@ namespace AddressBookSystem
             Console.WriteLine("Full name : " + person.FirstName+ " "+person.LastName);
             Console.WriteLine("Mobile number : "+person.PhoneNumber);
             Console.WriteLine("Email ID : "+person.Email);
-            Console.WriteLine("Address : " + person.Address[0]);
-            Console.WriteLine("City : " + person.Address[1]);
-            Console.WriteLine("State : " + person.Address[2]);
-            Console.WriteLine("Zipcode : " + person.Address[3]);
+            Console.WriteLine("Address : " + person.Address);
+            Console.WriteLine("City : " + person.City);
+            Console.WriteLine("State : " + person.State);
+            Console.WriteLine("Zipcode : " + person.ZipCode);
         }
         public Boolean checkDuplicate(string firstName)// this method is used to check whether the name is already present in list or not
         {
@@ -125,19 +128,19 @@ namespace AddressBookSystem
                                 break;
                             case 5:
                                 Console.Write("Enter the Address: ");
-                                person.Address[0] = Console.ReadLine();
+                                person.Address = Console.ReadLine();
                                 break;
                             case 6:
                                 Console.Write("Enter the City: ");
-                                person.Address[1] = Console.ReadLine();
+                                person.City = Console.ReadLine();
                                 break;
                             case 7:
                                 Console.Write("Enter the State: ");
-                                person.Address[2] = Console.ReadLine();
+                                person.State = Console.ReadLine();
                                 break;
                             case 8:
                                 Console.Write("Enter the Zipcode: ");
-                                person.Address[3] = Console.ReadLine();
+                                person.ZipCode = Console.ReadLine();
                                 break;
                             default:
                                 Console.WriteLine("Wrong input");
@@ -196,6 +199,7 @@ namespace AddressBookSystem
                 if(People.Contains(person)) 
                 {
                     dict.Add(firstName, People); // it will add the unique contact only and not the duplicate
+                    break;
                 }
             }
         }
@@ -215,7 +219,7 @@ namespace AddressBookSystem
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine("Enter the City or State to search contact: ");
             string result = Console.ReadLine();
-            foreach(Person person in People.FindAll(e => e.Address[1].Equals(result) || e.Address[2].Equals(result)))
+            foreach(Person person in People.FindAll(e => e.City.Equals(result) || e.State.Equals(result)))
             {
                 Console.WriteLine("-------------------------------------------");
                 printContact(person);
@@ -235,7 +239,7 @@ namespace AddressBookSystem
                     Console.WriteLine("Enter the city you want to search: ");
                     city = Console.ReadLine();
                     CityAddressBook[city] = new List<Person>();
-                    foreach(Person person in People.FindAll(e => e.Address[1].Equals(city)))
+                    foreach(Person person in People.FindAll(e => e.City.Equals(city)))
                     {
                         CityAddressBook[city].Add(person);
                     }
@@ -255,7 +259,7 @@ namespace AddressBookSystem
                     Console.WriteLine("Enter the state you want to search: ");
                     state = Console.ReadLine();
                     StateAddressBook[state] = new List<Person>();
-                    foreach (Person person in People.FindAll(e => e.Address[2].Equals(state)))
+                    foreach (Person person in People.FindAll(e => e.State.Equals(state)))
                     {
                         StateAddressBook[state].Add(person);
                     }
@@ -292,21 +296,21 @@ namespace AddressBookSystem
                     }
                     break;
                 case 2:
-                    foreach (Person person in People.OrderBy(city => city.Address[1])) // OrderBy is used to sort the contacts by City
+                    foreach (Person person in People.OrderBy(city => city.City)) // OrderBy is used to sort the contacts by City
                     {
                         Console.WriteLine("-------------------------------------------");
                         printContact(person);
                     }
                     break;
                 case 3:
-                    foreach (Person person in People.OrderBy(state => state.Address[2])) // OrderBy is used to sort the contacts by state
+                    foreach (Person person in People.OrderBy(state => state.State)) // OrderBy is used to sort the contacts by state
                     {
                         Console.WriteLine("-------------------------------------------");
                         printContact(person);
                     }
                     break;
                 case 4:
-                    foreach (Person person in People.OrderBy(code => code.Address[3])) // OrderBy is used to sort the contacts by zip code
+                    foreach (Person person in People.OrderBy(code => code.ZipCode)) // OrderBy is used to sort the contacts by zip code
                     {
                         Console.WriteLine("-------------------------------------------");
                         printContact(person);
@@ -328,13 +332,42 @@ namespace AddressBookSystem
                     sw.WriteLine("Full name : " + person.FirstName + " " + person.LastName);
                     sw.WriteLine("Mobile number : " + person.PhoneNumber);
                     sw.WriteLine("Email ID : " + person.Email);
-                    sw.WriteLine("Address : " + person.Address[0]);
-                    sw.WriteLine("City : " + person.Address[1]);
-                    sw.WriteLine("State : " + person.Address[2]);
-                    sw.WriteLine("Zipcode : " + person.Address[3]);
+                    sw.WriteLine("Address : " + person.Address);
+                    sw.WriteLine("City : " + person.City);
+                    sw.WriteLine("State : " + person.State);
+                    sw.WriteLine("Zipcode : " + person.ZipCode);
                 }
                 sw.Close();
                 Console.WriteLine(File.ReadAllText(path)); // all the contacts in the file are displayed
+            }
+        }
+        public void ReadWriteCSVFile()
+        {
+            string path1 = @"C:\Users\LENOVO\source\repos\AddressBookSystem\AddressBookSystem\AddressBook.csv";
+            Console.WriteLine("**********************Write to csv file **************************");
+            //Writing csv file
+            using (var writer = new StreamWriter(path1))
+            using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvExport.WriteRecords(People);
+            }
+            using (var reader = new StreamReader(path1))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Person>().ToList();
+                Console.WriteLine("Record inserted successfully in file in CSV format");
+                Console.WriteLine("Read data successfully from addresses csv.");
+                foreach (Person person in records)
+                {
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Full name : " + person.FirstName + " " + person.LastName);
+                    Console.WriteLine("Mobile number : " + person.PhoneNumber);
+                    Console.WriteLine("Email ID : " + person.Email);
+                    Console.WriteLine("Address : " + person.Address);
+                    Console.WriteLine("City : " + person.City);
+                    Console.WriteLine("State : " + person.State);
+                    Console.WriteLine("Zipcode : " + person.ZipCode);
+                }
             }
         }
     }

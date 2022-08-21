@@ -40,7 +40,7 @@ while(option != 10) //while loop is used so user can enter option of which task 
             addressBook.SortContacts();
             break;
         case 9: // if option 9 is then all the contacts are written and read from file
-            addressBook.ReadWriteFile();
+            addressBook.ReadWriteCSVFile();
             break;
         case 10:// if option value 10 is entered then it matches with this case and it will exit the code after displaying message
             Console.WriteLine("Exiting from Program.");
