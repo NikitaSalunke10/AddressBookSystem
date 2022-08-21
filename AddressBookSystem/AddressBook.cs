@@ -348,7 +348,7 @@ namespace AddressBookSystem
             using (var writer = new StreamWriter(path1))
             using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csvExport.WriteRecords(People); //contacts are written in csv file
+                csvExport.WriteRecords(People); //contacts are written in csv file 
             }
             using (var reader = new StreamReader(path1))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
