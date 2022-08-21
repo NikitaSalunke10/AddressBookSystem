@@ -317,5 +317,25 @@ namespace AddressBookSystem
                     break ;
             }
         }
+        public void ReadWriteFile() // this method is used to write and read the contacts
+        {
+            string path = @"C:\Users\LENOVO\source\repos\AddressBookSystem\AddressBookSystem\Contacts.txt"; // path of the file is stored in path
+            using(StreamWriter sw = new StreamWriter(path)) 
+            {
+                foreach(Person person in People)//foreach loop is used to write all contacts in file
+                {
+                    sw.WriteLine("-------------------------------------------");
+                    sw.WriteLine("Full name : " + person.FirstName + " " + person.LastName);
+                    sw.WriteLine("Mobile number : " + person.PhoneNumber);
+                    sw.WriteLine("Email ID : " + person.Email);
+                    sw.WriteLine("Address : " + person.Address[0]);
+                    sw.WriteLine("City : " + person.Address[1]);
+                    sw.WriteLine("State : " + person.Address[2]);
+                    sw.WriteLine("Zipcode : " + person.Address[3]);
+                }
+                sw.Close();
+                Console.WriteLine(File.ReadAllText(path)); // all the contacts in the file are displayed
+            }
+        }
     }
 }

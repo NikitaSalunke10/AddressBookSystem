@@ -1,0 +1,16 @@
+-------------------------------------------
+Full name : Nikita Salunke
+Mobile number : 9999999999
+Email ID : a@a.com
+Address : ABC
+City : Mumbai
+State : Maharashtra
+Zipcode : 827358
+-------------------------------------------
+Full name : Abc Xyz
+Mobile number : 9898989898
+Email ID : ab@a.com
+Address : abcdef
+City : Udaipur
+State : Rajasthan
+Zipcode : 283757

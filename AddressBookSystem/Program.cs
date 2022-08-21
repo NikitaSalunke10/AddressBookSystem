@@ -3,13 +3,13 @@
 Console.WriteLine("Welcome to AddressBook Program.");
 AddressBook addressBook = new AddressBook(); // creating the object of AddressBook class
 int option = 0;
-while(option != 9) //while loop is used so user can enter option of which task to perform and it will execute till it get value 3
+while(option != 10) //while loop is used so user can enter option of which task to perform and it will execute till it get value 3
 {
     Console.WriteLine("-------------------------------------------");
     Console.WriteLine("Press 1 for Add Contact.\nPress 2 for List the Contact.\nPress 3  to Edit the Contact.");
     Console.WriteLine("Press 4 to Delete the Contact.\nPress 5 to add Unique Contact.");
     Console.WriteLine("Press 6 to Display Unique Contacts.\nPress 7 to Search a Contact.");
-    Console.WriteLine("Press 8 to Display Sorted Contacts.\nPress 9 to exit");
+    Console.WriteLine("Press 8 to Display Sorted Contacts.\nPress 9 to Write and Read Contacts from file.\nPress 10 to exit");
     Console.WriteLine("Please enter option number: ");
     option = int.Parse(Console.ReadLine()); // taking value of option through console
 
@@ -39,7 +39,10 @@ while(option != 9) //while loop is used so user can enter option of which task t
         case 8: //option 8 is entered then it will display the sorted contacts
             addressBook.SortContacts();
             break;
-        case 9:// if option value 9 is entered then it matches with this case and it will exit the code after displaying message
+        case 9: // if option 9 is then all the contacts are written and read from file
+            addressBook.ReadWriteFile();
+            break;
+        case 10:// if option value 10 is entered then it matches with this case and it will exit the code after displaying message
             Console.WriteLine("Exiting from Program.");
             break;
         default: //if all the above cases doesn't match then it will print below message
