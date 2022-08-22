@@ -14,7 +14,7 @@ while (option != 12) //while loop is used so user can enter option of which task
     Console.WriteLine("Please enter option number: ");
     option = int.Parse(Console.ReadLine()); // taking value of option through console  
 
-    switch(option)
+    switch (option)
     {
         case 1: // if option value 1 is entered then it matches with this case and user will be able to add contact
             addressBook.addContact();
@@ -46,7 +46,10 @@ while (option != 12) //while loop is used so user can enter option of which task
         case 10: // if option 10 is then all the contacts are written and read from csv file
             addressBook.ReadWriteCSVFile();
             break;
-        case 11:// if option value 11 is entered then it matches with this case and it will exit the code after displaying message
+        case 11:
+            addressBook.ReadWriteCSVJSON();
+            break;
+        case 12:// if option value 12 is entered then it matches with this case and it will exit the code after displaying message
             Console.WriteLine("Exiting from Program.");
             break;
         default: //if all the above cases doesn't match then it will print below message
