@@ -355,7 +355,7 @@ namespace AddressBookSystem
             {
                 var records = csv.GetRecords<Person>().ToList(); // contacts from csv file are converted in list and stored in records
                 Console.WriteLine("Reading contacts from CSV file");
-                foreach (Person person in records)//foreach loop is used to print all contacts
+                foreach (Person person in records)//foreach loop is used to print all contacts 
                 {
                     Console.WriteLine("-------------------------------------------");
                     Console.WriteLine("Full name : " + person.FirstName + " " + person.LastName);
