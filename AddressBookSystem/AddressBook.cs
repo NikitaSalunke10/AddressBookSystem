@@ -391,7 +391,7 @@ namespace AddressBookSystem
                 using (StreamWriter sw = new StreamWriter(exportPath))
                 using (JsonWriter writer = new JsonTextWriter(sw)) //JsonTextWriter object is created and StreamWriter object is passed
                 {
-                    serializer.Serialize(writer, records);//this is used to write contacts in csv file
+                    serializer.Serialize(writer, records);//this is used to write contacts in csv file 
                 }
             }
         }

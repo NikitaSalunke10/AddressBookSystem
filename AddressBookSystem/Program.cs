@@ -12,7 +12,7 @@ while(option != 11) //while loop is used so user can enter option of which task 
     Console.WriteLine("Press 8 to Display Sorted Contacts.\nPress 9 to Write and Read Contacts from file.");
     Console.WriteLine("Press 10 to Write and Read Contacts from CSV file.\nPress 11 to exit");
     Console.WriteLine("Please enter option number: ");
-    option = int.Parse(Console.ReadLine()); // taking value of option through console 
+    option = int.Parse(Console.ReadLine()); // taking value of option through console  
 
     switch(option)
     {
