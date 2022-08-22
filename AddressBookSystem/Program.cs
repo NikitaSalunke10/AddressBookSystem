@@ -46,7 +46,7 @@ while(option != 12) //while loop is used so user can enter option of which task 
         case 10: // if option 10 is then all the contacts are written and read from csv file
             addressBook.ReadWriteCSVFile();
             break;
-        case 11:
+        case 11:// if option 11 is then all the contacts are written and read using JSON
             addressBook.ReadWriteCSVJSON();
             break;
         case 12:// if option value 12 is entered then it matches with this case and it will exit the code after displaying message
