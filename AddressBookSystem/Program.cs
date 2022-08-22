@@ -3,18 +3,14 @@
 Console.WriteLine("Welcome to AddressBook Program.");
 AddressBook addressBook = new AddressBook(); // creating the object of AddressBook class
 int option = 0;
-<<<<<<< HEAD
 while(option != 11) //while loop is used so user can enter option of which task to perform and it will execute till it get value 3
-=======
-while(option != 12) //while loop is used so user can enter option of which task to perform and it will execute till it get value 3
->>>>>>> UC-15-StoreContactsUsingJSON
 {
     Console.WriteLine("-------------------------------------------");
     Console.WriteLine("Press 1 for Add Contact.\nPress 2 for List the Contact.\nPress 3  to Edit the Contact.");
     Console.WriteLine("Press 4 to Delete the Contact.\nPress 5 to add Unique Contact.");
     Console.WriteLine("Press 6 to Display Unique Contacts.\nPress 7 to Search a Contact.");
     Console.WriteLine("Press 8 to Display Sorted Contacts.\nPress 9 to Write and Read Contacts from file.");
-    Console.WriteLine("Press 10 to Write and Read Contacts from CSV file.\nPress 11 to Read and Write contacts in CSV using JSON.\nPress 12 to exit");
+    Console.WriteLine("Press 10 to Write and Read Contacts from CSV file.\nPress 11 to exit");
     Console.WriteLine("Please enter option number: ");
     option = int.Parse(Console.ReadLine()); // taking value of option through console
 
@@ -50,10 +46,7 @@ while(option != 12) //while loop is used so user can enter option of which task 
         case 10: // if option 10 is then all the contacts are written and read from csv file
             addressBook.ReadWriteCSVFile();
             break;
-        case 11:
-            addressBook.ReadWriteCSVJSON();
-            break;
-        case 12:// if option value 12 is entered then it matches with this case and it will exit the code after displaying message
+        case 11:// if option value 11 is entered then it matches with this case and it will exit the code after displaying message
             Console.WriteLine("Exiting from Program.");
             break;
         default: //if all the above cases doesn't match then it will print below message
