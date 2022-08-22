@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -364,6 +365,33 @@ namespace AddressBookSystem
                     Console.WriteLine("City : " + person.City);
                     Console.WriteLine("State : " + person.State);
                     Console.WriteLine("Zipcode : " + person.ZipCode);
+                }
+            }
+        }
+        public void ReadWriteCSVJSON()//this method is used to read and write contacts using JSON 
+        {
+            string path1 = @"C:\Users\LENOVO\source\repos\AddressBookSystem\AddressBookSystem\AddressBook.csv"; //path of csv file from which the contacts are retrieved is stored in path
+            string exportPath = @"C:\Users\LENOVO\source\repos\AddressBookSystem\AddressBookSystem\JSONAddressBook.csv"; //path of csv file to store contacts using JSON
+            using (var reader = new StreamReader(path1))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Person>().ToList(); // contacts from csv file are converted in list and stored in records
+                foreach (Person person in records)//foreach loop is used to print all contacts
+                {
+                    Console.WriteLine("-------------------------------------------");
+                    Console.WriteLine("Full name : " + person.FirstName + " " + person.LastName);
+                    Console.WriteLine("Mobile number : " + person.PhoneNumber);
+                    Console.WriteLine("Email ID : " + person.Email);
+                    Console.WriteLine("Address : " + person.Address);
+                    Console.WriteLine("City : " + person.City);
+                    Console.WriteLine("State : " + person.State);
+                    Console.WriteLine("Zipcode : " + person.ZipCode);
+                }
+                JsonSerializer serializer = new JsonSerializer();
+                using (StreamWriter sw = new StreamWriter(exportPath))
+                using (JsonWriter writer = new JsonTextWriter(sw)) //JsonTextWriter object is created and StreamWriter object is passed
+                {
+                    serializer.Serialize(writer, records);//this is used to write contacts in csv file
                 }
             }
         }
