@@ -3,7 +3,7 @@
 Console.WriteLine("Welcome to AddressBook Program.");
 AddressBook addressBook = new AddressBook(); // creating the object of AddressBook class
 int option = 0;
-while(option != 10) //while loop is used so user can enter option of which task to perform and it will execute till it get value 3
+while(option != 11) //while loop is used so user can enter option of which task to perform and it will execute till it get value 3
 {
     Console.WriteLine("-------------------------------------------");
     Console.WriteLine("Press 1 for Add Contact.\nPress 2 for List the Contact.\nPress 3  to Edit the Contact.");
